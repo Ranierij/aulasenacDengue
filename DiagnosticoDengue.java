@@ -2,21 +2,8 @@ package br.senac.aula2;
 public class DiagnosticoDengue {
     public static void main(String[] args) {
         // Verificando se foram passados sintomas suficientes
-        if (args == null || args[0] == null || args[1] == null || args[2] == null || args[3] == null) {
-            System.out.println("Por favor, forneça os sintomas do paciente.");
-            return;
-        }
-
-        // Obtendo os sintomas do paciente dos argumentos da linha de comando
-        String dorCabeca = args[0];
-        String febreAlta = args[1];
-        String dorOlhos = args[2];
-        String manchasVermelhas = args[3];
-
-        // Calculando o diagnóstico
-        boolean dengue = diagnosticoDengue(dorCabeca, febreAlta, dorOlhos, manchasVermelhas);
-
-        // Imprimindo o diagnóstico
+        boolean argsValidos = args != null && args[0] != null && args[1] != null && args[2] != null && args[3] != null;
+        boolean dengue = argsValidos && diagnosticoDengue(args[0], args[1], args[2], args[3]);
         imprimirDiagnostico(dengue);
     }
 
@@ -28,10 +15,7 @@ public class DiagnosticoDengue {
 
     // Função para imprimir o diagnóstico
     public static void imprimirDiagnostico(boolean dengue) {
-        if (dengue) {
-            System.out.println("O paciente pode estar com dengue.");
-        } else {
-            System.out.println("O paciente provavelmente não está com dengue.");
-        }
+        String resultado = dengue ? "O paciente pode estar com dengue." : "O paciente provavelmente não está com dengue.";
+        System.out.println(resultado);
     }
 }
